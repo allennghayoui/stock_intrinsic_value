@@ -2,12 +2,10 @@ import streamlit as st
 import requests
 import json
 
-from secret import call_api
-
 
 
 def get_comapany_data(symbol):
-    api_url = call_api(f'https://financialmodelingprep.com/api/v3/discounted-cash-flow/{symbol}?apikey=%s' % st.secrets['api_key'])
+    api_url = f'https://financialmodelingprep.com/api/v3/discounted-cash-flow/{symbol}?apikey=%s' % st.secrets['api_key']
     response = requests.get(api_url)
     return json.loads(response.text)[0]
 
